@@ -163,14 +163,14 @@ footer{border-top:1px solid var(--line);text-align:center;padding:1.6rem 1rem 2.
 </header>
 
 <audio id="bgm" loop preload="none">
-  <source src="san-an.mp3" type="audio/mpeg">
+  <source src="musique-zen.mp3" type="audio/mpeg">
 </audio>
 
 <main id="main"></main>
 
 <footer>
-  <p><span class="fr">Musique : Yokoyama Katsuya — <i>San'an</i> (shakuhachi). Site inspiré de <a href="https://twagirumukiza.github.io/Art-of-War/">L'Art de la Guerre de Sun Tzu</a>. © Twagirumukiza</span>
-     <span class="en">Music: Yokoyama Katsuya — <i>San'an</i> (shakuhachi). Site inspired by <a href="https://twagirumukiza.github.io/Art-of-War/">Sun Tzu's The Art of War</a>. © Twagirumukiza</span></p>
+  <p><span class="fr">Musique : Kaazoom (instruments traditionnels). Site inspiré de <a href="https://twagirumukiza.github.io/Art-of-War/">L'Art de la Guerre de Sun Tzu</a>. © Twagirumukiza</span>
+     <span class="en">Music: Kaazoom (traditional instruments). Site inspired by <a href="https://twagirumukiza.github.io/Art-of-War/">Sun Tzu's The Art of War</a>. © Twagirumukiza</span></p>
 </footer>
 <div id="toast"></div>
 
@@ -488,7 +488,7 @@ bgm.addEventListener('error',()=>{missing=true;paint()},true);
 bgm.querySelector('source').addEventListener('error',()=>{missing=true;paint()});
 async function play(){
   try{await bgm.play()}catch(e){/* autoplay blocked */}
-  if(missing||bgm.error) toast(root.dataset.lang==='fr'?"Fichier audio introuvable : ajoutez san-an.mp3 à côté de index.html.":"Audio file not found: add san-an.mp3 next to index.html.");
+  if(missing||bgm.error) toast(root.dataset.lang==='fr'?"Fichier audio introuvable : ajoutez musique-zen.mp3 à côté de index.html.":"Audio file not found: add musique-zen.mp3 next to index.html.");
 }
 mute.onclick=()=>{
   if(bgm.paused){wantMusic=true;store.set('sam-music','on');bgm.load();play()}
