@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>L'Art du Samouraï — Voie, stratégie, GRC, négociation & Histoire</title>
-<meta name="description" content="Bushidō, arts de la voie, stratégie de Musashi et Munenori, transposés à la cybersécurité, au GRC, à la négociation et au management, à l'épreuve de cas historiques.">
+<title>La Voie du Samouraï — De la maîtrise au sens : stratégie, GRC, négociation & Histoire</title>
+<meta name="description" content="De la maîtrise au sens : bushidō, arts de la voie, stratégie de Musashi et Munenori, transposés au GRC, à la cybersécurité, à la négociation et au management, à l'épreuve de cas historiques.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -149,7 +149,7 @@ footer{border-top:1px solid var(--line);text-align:center;padding:1.6rem 1rem 2.
 
 <header>
   <div class="bar">
-    <a class="brand" href="#accueil"><span class="hanko">侍</span><span><span class="fr">L'Art du Samouraï</span><span class="en">The Art of the Samurai</span></span></a>
+    <a class="brand" href="#accueil"><span class="hanko">侍</span><span><span class="fr">La Voie du Samouraï</span><span class="en">The Way of the Samurai</span></span></a>
     <nav id="nav"></nav>
     <div class="tools">
       <button id="theme" title="Thème / Theme">🌙</button>
@@ -182,8 +182,8 @@ const store={get(k,d){try{return localStorage.getItem(k)??d}catch(e){return d}},
 /* ---------- content ---------- */
 const TABS=[
  {id:'accueil',jp:'門',fr:'Accueil',en:'Home'},
- {id:'voie',jp:'道',fr:'La Voie',en:'The Way'},
- {id:'arts',jp:'藝',fr:'Les arts',en:'The arts'},
+ {id:'voie',jp:'道',fr:'Bushidō',en:'Bushidō'},
+ {id:'arts',jp:'藝',fr:'Les arts (maîtrise)',en:'The arts (mastery)'},
  {id:'strategie',jp:'兵',fr:'Stratégie',en:'Strategy'},
  {id:'grc',jp:'守',fr:'GRC & Cyber',en:'GRC & Cyber'},
  {id:'negociation',jp:'和',fr:'Négociation & Management',en:'Negotiation & Management'},
@@ -352,9 +352,9 @@ R.accueil=()=>`
 <div class="hero">
   <div>
     <div class="kicker">${T({fr:'Bushidō · 武士道',en:'Bushidō · 武士道'})}</div>
-    <h1><span class="fr">L'Art du Samouraï</span><span class="en">The Art of the Samurai</span>
-      <small><span class="fr">Voie, stratégie, risque, négociation</span><span class="en">Way, strategy, risk, negotiation</span></small></h1>
-    <p class="lead">${T({fr:"Une tradition guerrière devenue une école de maîtrise de soi, de discipline et de jugement — que l'on peut relire aujourd'hui à la lumière de la cybersécurité, du GRC, de la négociation et du management.",en:"A warrior tradition that became a school of self-mastery, discipline and judgement — which can be reread today in the light of cybersecurity, GRC, negotiation and management."},'span')}</p>
+    <h1><span class="fr">La Voie du Samouraï</span><span class="en">The Way of the Samurai</span>
+      <small><span class="fr">De la maîtrise au sens</span><span class="en">From mastery to meaning</span></small></h1>
+    <p class="lead">${T({fr:"Le samouraï enseigne la maîtrise : celle du sabre, de l'arc, de soi. La Voie, elle, interroge le sens de cette maîtrise. La véritable force ne se mesure pas seulement à ce que l'on est capable de faire, mais à ce que l'on décide de faire — et à ce que l'on choisit de ne pas faire.",en:"The samurai teaches mastery: of the sword, the bow, the self. The Way questions the meaning of that mastery. True strength is measured not only by what one is able to do, but by what one decides to do — and by what one chooses not to do."},'span')}</p>
     <div class="maxim">${T({fr:"La voie ne se possède pas : elle se pratique, chaque jour, jusqu'à ce que le geste devienne juste.",en:"The way is not possessed: it is practised, every day, until the gesture becomes right."},'span')}
       <cite>${T({fr:"— Maxime du site",en:"— Maxim of this site"})}</cite></div>
     <p>${T({fr:"Les samouraïs (侍, <i>samurai</i>, « ceux qui servent ») ont dominé la vie politique et militaire du Japon pendant plusieurs siècles, avant d'être abolis comme classe à l'ère Meiji (1868–1912). Leur héritage est autant culturel — le sabre, l'arc, le thé, le zen, le théâtre nō — que stratégique.",en:"The samurai (侍, <i>samurai</i>, “those who serve”) dominated Japan's political and military life for several centuries, before being abolished as a class in the Meiji era (1868–1912). Their legacy is as cultural — the sword, the bow, tea, Zen, nō theatre — as it is strategic."},'span')}</p>
@@ -367,10 +367,16 @@ R.accueil=()=>`
     <div class="caption">${T({fr:"Estampe d'inspiration ukiyo-e · 浮世絵 — le guerrier en méditation (zen) avec sabres et bouilloire à thé",en:"Ukiyo-e inspired print · 浮世絵 — the warrior in Zen meditation with swords and tea kettle"})}</div>
   </div>
 </div>
+<h3>${T({fr:'Trois questions',en:'Three questions'})}</h3>
+<div class="grid">
+<div class="card"><span class="k">能</span><div class="sub">${T({fr:'La maîtrise',en:'Mastery'})}</div><h4>${T({fr:'Ce que je peux faire',en:'What I can do'})}</h4><p>${T({fr:"Les capacités, la technique, l'entraînement. C'est le domaine des arts et de la stratégie.",en:"Capabilities, technique, training. This is the domain of the arts and of strategy."},'span')}</p></div>
+<div class="card"><span class="k">決</span><div class="sub">${T({fr:'La décision',en:'Decision'})}</div><h4>${T({fr:'Ce que je décide de faire',en:'What I decide to do'})}</h4><p>${T({fr:"Les priorités, l'engagement, la responsabilité. C'est le domaine de la Voie : à quoi servent mes capacités ?",en:"Priorities, commitment, responsibility. This is the domain of the Way: what are my capabilities for?"},'span')}</p></div>
+<div class="card"><span class="k">止</span><div class="sub">${T({fr:'La retenue',en:'Restraint'})}</div><h4>${T({fr:'Ce que je choisis de ne pas faire',en:'What I choose not to do'})}</h4><p>${T({fr:"Le sabre qui reste au fourreau, le combat évité, la mesure gardée. Souvent l'enseignement le plus difficile.",en:"The sword that stays in its scabbard, the fight avoided, the measure kept. Often the hardest teaching."},'span')}</p></div>
+</div>
 <h3>${T({fr:'Sept portes pour entrer',en:'Seven doors to enter'})}</h3>
 <div class="grid">${TABS.slice(1).map((t,i)=>`<a class="card" href="#${t.id}" style="text-decoration:none;color:inherit"><span class="k">${t.jp}</span><div class="sub">0${i+1}</div><h4>${T(t)}</h4><p>${T({
-  voie:{fr:"Les sept vertus et dix principes intérieurs.",en:"The seven virtues and ten inner principles."},
-  arts:{fr:"Sabre, arc, calligraphie, thé, zen, nō.",en:"Sword, bow, calligraphy, tea, Zen, nō."},
+  voie:{fr:"Le sens de la maîtrise : vertus et principes intérieurs.",en:"The meaning of mastery: virtues and inner principles."},
+  arts:{fr:"La maîtrise : sabre, arc, calligraphie, thé, zen, nō.",en:"Mastery: sword, bow, calligraphy, tea, Zen, nō."},
   strategie:{fr:"Musashi, Munenori, Takuan face à Sun Tzu.",en:"Musashi, Munenori, Takuan versus Sun Tzu."},
   grc:{fr:"Zanshin, ma-ai, kata : lecture GRC.",en:"Zanshin, ma-ai, kata: a GRC reading."},
   negociation:{fr:"Courtoisie, timing, réciprocité.",en:"Courtesy, timing, reciprocity."},
@@ -381,6 +387,8 @@ R.voie=()=>`${title(1,'01',{fr:'La Voie du guerrier',en:'The Way of the warrior'
 <h3>${T({fr:'Les sept vertus',en:'The seven virtues'})}</h3>
 <div class="grid">${VIRTUES.map(v=>`<div class="card"><span class="k">${v.k}</span><div class="sub">${v.r}</div><h4>${T(v)}</h4><p>${T(v.d,'span')}</p></div>`).join('')}</div>
 <div class="note"><b>${T({fr:'Prudence historique.',en:'Historical caution.'})}</b> ${T({fr:"La liste en sept vertus est une synthèse moderne popularisée en 1900 par Nitobe Inazō (<i>Bushido: The Soul of Japan</i>). Le bushidō formalisé s'est surtout construit à l'époque d'Edo (1603–1868), lorsque les samouraïs étaient devenus des administrateurs en temps de paix. Il faut donc distinguer les pratiques des guerriers, les écrits d'Edo et l'idéalisation de l'ère Meiji.",en:"The list of seven virtues is a modern synthesis popularised in 1900 by Nitobe Inazō (<i>Bushido: The Soul of Japan</i>). Formalised bushidō was mostly built in the Edo period (1603–1868), when samurai had become administrators in peacetime. One must therefore distinguish warrior practice, Edo writings and Meiji-era idealisation."},'span')}</div>
+<h3>${T({fr:'Ce que l\'on choisit de ne pas faire',en:'What one chooses not to do'})}</h3>
+<p>${T({fr:"La maîtrise donne le pouvoir d'agir ; la Voie demande si l'on doit agir. Yagyū Munenori oppose l'épée qui tue à celle qui préserve (katsujinken) : la plus haute technique est celle qui rend le combat inutile. On retrouve l'idée chez Sun Tzu — gagner sans combattre — et dans le zanshin, qui garde la vigilance même après la victoire. Le sabre qui reste au fourreau n'est pas un sabre inutile : c'est un pouvoir tenu en retenue.",en:"Mastery gives the power to act; the Way asks whether one should act. Yagyū Munenori contrasts the sword that kills with the one that preserves (katsujinken): the highest technique is the one that makes the fight unnecessary. The idea is found in Sun Tzu — winning without fighting — and in zanshin, which keeps vigilance even after victory. The sword that stays in its scabbard is not a useless sword: it is power held in restraint."},'span')}</p>
 <h3>${T({fr:'Dix principes intérieurs',en:'Ten inner principles'})}</h3>
 ${acc('pr')}
 <div id="pr">${PRINCIPLES.map((p,i)=>`<details><summary><span class="n">${String(i+1).padStart(2,'0')}</span><span class="t"><span class="jp">${p.jp}</span> ${p.r} <small>${T(p)}</small></span></summary><div class="body"><h5>${T({fr:'Dans la voie',en:'In the way'})}</h5><p>${T(p.e,'span')}</p><h5>${T({fr:'Transposition',en:'Transposition'})}</h5><p>${T(p.t,'span')}</p></div></details>`).join('')}</div>
@@ -405,7 +413,7 @@ R.strategie=()=>`${title(3,'03',{fr:'Stratégie : Musashi, Munenori, Takuan',en:
 <div class="note"><b>Hagakure.</b> ${T({fr:"Compilé au début du XVIIIᵉ siècle à partir des propos de Yamamoto Tsunetomo, ce recueil est célèbre pour son idée d'une préparation constante à la mort. Il s'agit d'une réflexion de temps de paix et d'un regret de l'ancienne gloire guerrière : à lire dans son contexte plutôt qu'à prendre comme un mode d'emploi.",en:"Compiled in the early 18th century from the remarks of Yamamoto Tsunetomo, this collection is famous for its idea of constant readiness for death. It is a peacetime reflection and a nostalgia for former warrior glory: to be read in context rather than taken as an instruction manual."},'span')}</div>
 ${nav(3)}`;
 
-R.grc=()=>`${title(4,'04',{fr:"L'Art du Samouraï appliqué au GRC et à la cybersécurité",en:'The Art of the Samurai applied to GRC and cybersecurity'},{fr:"Un cadre de lecture : les concepts de la voie comme grille de réflexes pour la gouvernance, le risque et la conformité. La correspondance est proposée à titre d'interprétation.",en:"A reading frame: the concepts of the way as a grid of reflexes for governance, risk and compliance. The mapping is offered as an interpretation."})}
+R.grc=()=>`${title(4,'04',{fr:"La Voie du Samouraï appliquée au GRC et à la cybersécurité",en:'The Way of the Samurai applied to GRC and cybersecurity'},{fr:"Un cadre de lecture : les concepts de la voie comme grille de réflexes pour la gouvernance, le risque et la conformité. La correspondance est proposée à titre d'interprétation.",en:"A reading frame: the concepts of the way as a grid of reflexes for governance, risk and compliance. The mapping is offered as an interpretation."})}
 <h3>${T({fr:'Table de correspondance',en:'Correspondence table'})}</h3>
 <div class="tscroll"><table><tr><th>${T({fr:'Concept samouraï',en:'Samurai concept'})}</th><th>${T({fr:'GRC / cybersécurité',en:'GRC / cybersecurity'})}</th></tr>${GRC.map(r=>`<tr><td><b>${r[0]}</b></td><td>${T(r[1])}</td></tr>`).join('')}</table></div>
 <h3>Shu-Ha-Ri 守破離 ${T({fr:'et la maturité GRC',en:'and GRC maturity'})}</h3>
@@ -414,6 +422,8 @@ R.grc=()=>`${title(4,'04',{fr:"L'Art du Samouraï appliqué au GRC et à la cybe
 <h3>${T({fr:"Giri sans ninjō : la conformité de façade",en:"Giri without ninjō: façade compliance"})}</h3>
 <p>${T({fr:"Un RGPD, une NIS2 ou un DORA appliqués uniquement comme obligation (giri) produisent des dossiers sans capacité réelle. L'équivalent du ninjō, c'est la connaissance du terrain : les équipes, les contraintes, les dépendances. Distinguer <b>conformité documentaire</b> et <b>capacité opérationnelle</b> est la première discipline.",en:"A GDPR, NIS2 or DORA applied only as an obligation (giri) produces files without real capability. The equivalent of ninjō is knowledge of the ground: teams, constraints, dependencies. Distinguishing <b>documentary compliance</b> from <b>operational capability</b> is the first discipline."},'span')}</p>
 <div class="note"><b>${T({fr:"Formule",en:"Formula"})}.</b> ${T({fr:"Zanshin + kata + ma-ai : surveiller après, répéter avant, doser la distance pendant.",en:"Zanshin + kata + ma-ai: watch after, rehearse before, tune the distance during."},'span')}</div>
+<h3>${T({fr:"Pouvoir ≠ devoir",en:"Can ≠ should"})}</h3>
+<p>${T({fr:"Ce que l'on est capable de déployer (une surveillance, une collecte, un contrôle, une sanction) n'est pas forcément ce que l'on doit déployer. Le GRC mûr se reconnaît aussi à ses renoncements : le contrôle disproportionné que l'on n'impose pas, la donnée que l'on choisit de ne pas collecter, l'exception que l'on ne tolère pas. C'est la retenue du sabre au fourreau : proportionnalité, minimisation, juste mesure.",en:"What one is able to deploy (monitoring, collection, a control, a sanction) is not necessarily what one should deploy. Mature GRC is also recognised by its renunciations: the disproportionate control not imposed, the data deliberately not collected, the exception not tolerated. It is the restraint of the sword in its scabbard: proportionality, minimisation, right measure."},'span')}</p>
 ${nav(4)}`;
 
 R.negociation=()=>`${title(5,'05',{fr:'Négociation & Management',en:'Negotiation & Management'},{fr:"La tradition samouraï n'est pas seulement une affaire de combat : c'est aussi une culture de la relation, de la forme et de la réciprocité.",en:"The samurai tradition is not only about combat: it is also a culture of relationship, form and reciprocity."})}
