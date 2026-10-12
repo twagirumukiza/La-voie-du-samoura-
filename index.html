@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Art du Samouraï — Voie, stratégie, GRC, négociation & Histoire</title>
+<meta name="description" content="Bushidō, arts de la voie, stratégie de Musashi et Munenori, transposés à la cybersécurité, au GRC, à la négociation et au management, à l'épreuve de cas historiques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#efe5cf; --paper2:#e4d6b8; --ink:#1d1a15; --ink2:#4a4237;
+  --teal:#1f4e52; --teal2:#2c6a6a; --indigo:#14304a; --coral:#d4694a; --ochre:#b8863f;
+  --seal:#b02e24; --line:rgba(29,26,21,.22); --card:rgba(255,250,236,.62); --shadow:rgba(40,28,10,.25);
+  --fs:17px;
+}
+html[data-theme="dark"]{
+  --paper:#0f1c24; --paper2:#14262f; --ink:#ece1c9; --ink2:#bdb29a;
+  --teal:#5fa8a3; --teal2:#7fc1b8; --indigo:#8fb4d4; --coral:#ee8a68; --ochre:#d9a95c;
+  --seal:#d4483c; --line:rgba(236,225,201,.22); --card:rgba(20,38,47,.7); --shadow:rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:var(--fs)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Spectral',Georgia,serif;line-height:1.65;
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(212,105,74,.10),transparent 55%),radial-gradient(ellipse at 90% 100%,rgba(31,78,82,.14),transparent 55%);
+  min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.30;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .28  0 0 0 0 .18  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+html[data-theme="dark"] body::before{opacity:.16;mix-blend-mode:screen}
+h1,h2,h3,h4,.jp{font-family:'Shippori Mincho','Noto Serif JP',serif;letter-spacing:.01em}
+a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--coral)}
+.fr,.en{}
+html[data-lang="fr"] .en{display:none!important}
+html[data-lang="en"] .fr{display:none!important}
+
+/* header */
+header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:1180px;margin:auto;display:flex;align-items:center;gap:.8rem;padding:.55rem 1rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-family:'Shippori Mincho',serif;font-weight:800;font-size:1.05rem;white-space:nowrap}
+.hanko{display:inline-grid;place-items:center;width:2rem;height:2rem;background:var(--seal);color:#f7ead3;font-family:'Shippori Mincho',serif;font-weight:800;border-radius:3px;transform:rotate(-4deg);box-shadow:inset 0 0 0 2px rgba(255,255,255,.18)}
+nav{display:flex;gap:.1rem;flex:1;justify-content:center;flex-wrap:wrap}
+nav a{color:var(--ink2);text-decoration:none;padding:.3rem .6rem;border-radius:3px;font-size:.88rem;font-family:'Shippori Mincho',serif;font-weight:600;border-bottom:2px solid transparent}
+nav a:hover{color:var(--coral)}
+nav a.on{color:var(--ink);border-bottom-color:var(--seal)}
+.tools{display:flex;gap:.3rem;align-items:center}
+.tools button{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:3px;min-width:2.1rem;height:2.1rem;cursor:pointer;font:600 .8rem 'Shippori Mincho',serif}
+.tools button:hover{border-color:var(--coral);color:var(--coral)}
+#menu{display:none}
+@media(max-width:980px){
+  #menu{display:inline-block}
+  nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);flex-direction:column;padding:.6rem 1rem;border-bottom:1px solid var(--line)}
+  nav.open{display:flex}
+  .bar{flex-wrap:wrap}
+  .tools{margin-left:auto}
+}
+
+main{max-width:1000px;margin:auto;padding:1.5rem 1.1rem 4rem}
+.tab{display:none;animation:rise .5s ease both}
+.tab.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;padding:1.2rem 0 2rem}
+.kicker{font-family:'Shippori Mincho',serif;color:var(--seal);letter-spacing:.35em;font-size:.8rem;text-transform:uppercase}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.08;margin:.3rem 0 .2rem;font-weight:800}
+.hero h1 small{display:block;font-size:.42em;font-weight:600;color:var(--teal);letter-spacing:.04em;margin-top:.5rem}
+.lead{font-size:1.12rem;color:var(--ink2)}
+.maxim{margin:1.2rem 0;padding:.8rem 1.1rem;border-left:4px solid var(--seal);background:var(--card);font-style:italic;font-size:1.1rem}
+.maxim cite{display:block;font-style:normal;font-size:.8rem;color:var(--ink2);margin-top:.3rem}
+.print{position:relative;max-width:900px;margin:0 auto;filter:url(#deckle) drop-shadow(0 12px 18px var(--shadow));background:#efe3c8;padding:16px;transform:rotate(1.2deg)}
+.print-in{position:relative;aspect-ratio:1.83/1;overflow:hidden;background:linear-gradient(160deg,var(--teal),var(--indigo) 70%);display:grid;place-items:center}
+.print-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:saturate(.95) contrast(1.02)}
+.print-in::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.55;
+  background:
+   linear-gradient(98deg,transparent 40%,rgba(30,20,10,.35) 40.3%,transparent 40.8%) ,
+   linear-gradient(72deg,transparent 62%,rgba(30,20,10,.3) 62.2%,transparent 62.6%),
+   linear-gradient(120deg,transparent 22%,rgba(30,20,10,.25) 22.2%,transparent 22.5%),
+   radial-gradient(ellipse at center,transparent 55%,rgba(60,35,10,.45))}
+.fallback{position:absolute;inset:0;display:grid;place-items:center;
+  background:
+   radial-gradient(circle at 50% 120%,transparent 28%,rgba(255,255,255,.10) 29% 31%,transparent 32%) 0 0/46px 23px,
+   radial-gradient(circle at 50% 120%,transparent 28%,rgba(255,255,255,.07) 29% 31%,transparent 32%) 23px 11px/46px 23px}
+.fallback span{font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(7rem,22vw,12rem);color:var(--coral);text-shadow:0 0 30px rgba(0,0,0,.4);line-height:1}
+.caption{font-size:.78rem;color:var(--ink2);text-align:center;margin-top:.9rem;font-style:italic}
+
+/* sections */
+.title{display:flex;align-items:center;gap:1rem;margin:.6rem 0 .2rem}
+.title .hanko{width:2.6rem;height:2.6rem;font-size:1.3rem;flex:none}
+.title h2{font-size:clamp(1.5rem,3.4vw,2.2rem);margin:0;font-weight:800}
+.intro{color:var(--ink2);font-size:1.08rem;max-width:760px;margin:.4rem 0 1.4rem}
+h3{font-size:1.35rem;margin:2rem 0 .6rem;color:var(--teal);border-bottom:1px solid var(--line);padding-bottom:.3rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden}
+.card .k{position:absolute;right:.5rem;top:-.5rem;font-family:'Shippori Mincho',serif;font-weight:800;font-size:4.2rem;color:var(--teal);opacity:.13;line-height:1;pointer-events:none}
+.card h4{margin:0 0 .15rem;font-size:1.12rem}
+.card .sub{font-size:.8rem;color:var(--seal);font-family:'Shippori Mincho',serif;letter-spacing:.06em}
+.card p{margin:.45rem 0 0;font-size:.97rem}
+.note{border:1px dashed var(--ochre);background:color-mix(in srgb,var(--ochre) 10%,transparent);padding:.8rem 1rem;margin:1.4rem 0;font-size:.95rem}
+.note b{color:var(--seal)}
+.toolrow{display:flex;gap:.5rem;margin:.6rem 0 1rem;flex-wrap:wrap}
+.toolrow button{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:.3rem .8rem;border-radius:3px;cursor:pointer;font:600 .85rem 'Shippori Mincho',serif}
+.toolrow button:hover{border-color:var(--coral);color:var(--coral)}
+details{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);margin:.6rem 0;border-radius:3px}
+details[open]{border-left-color:var(--seal)}
+summary{cursor:pointer;list-style:none;padding:.8rem 1rem;display:flex;gap:.8rem;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";margin-left:auto;color:var(--seal);font-weight:800}
+details[open] summary::after{content:"−"}
+summary .n{font-family:'Shippori Mincho',serif;color:var(--seal);font-weight:800}
+summary .t{font-family:'Shippori Mincho',serif;font-weight:800;font-size:1.1rem}
+summary .t small{display:block;font-family:'Spectral',serif;font-weight:400;color:var(--ink2);font-size:.88rem}
+.body{padding:0 1.1rem 1rem 1.1rem}
+.body h5{margin:1rem 0 .2rem;font:800 .78rem 'Shippori Mincho',serif;letter-spacing:.15em;text-transform:uppercase;color:var(--teal)}
+.body p{margin:.2rem 0}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.93rem;background:var(--card)}
+th,td{border:1px solid var(--line);padding:.5rem .7rem;text-align:left;vertical-align:top}
+th{background:color-mix(in srgb,var(--teal) 16%,transparent);font-family:'Shippori Mincho',serif}
+.tscroll{overflow-x:auto}
+.steps{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+.step{flex:1 1 200px;border:1px solid var(--line);background:var(--card);padding:.8rem 1rem;position:relative}
+.step .jp{font-size:2rem;color:var(--coral);line-height:1}
+.step h4{margin:.2rem 0}
+.pill{display:inline-block;background:var(--teal);color:#f7ead3;font-size:.72rem;padding:.05rem .5rem;border-radius:20px;margin-right:.3rem;font-family:'Shippori Mincho',serif}
+ul.tight{margin:.3rem 0 .3rem 1.1rem;padding:0}
+ul.tight li{margin:.15rem 0}
+.pager{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);flex-wrap:wrap}
+.pager a{font-family:'Shippori Mincho',serif;font-weight:600;text-decoration:none}
+footer{border-top:1px solid var(--line);text-align:center;padding:1.6rem 1rem 2.4rem;color:var(--ink2);font-size:.85rem}
+#toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:.6rem 1rem;border-radius:4px;font-size:.88rem;opacity:0;pointer-events:none;transition:opacity .3s;z-index:300;max-width:90vw;text-align:center}
+#toast.on{opacity:1}
+.eq{display:inline-flex;gap:2px;align-items:flex-end;height:.9rem}
+.eq i{width:3px;background:var(--coral);height:30%;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}
+.paused .eq i{animation:none}
+@keyframes eq{50%{height:100%}}
+@media print{header,#toast,.toolrow,.pager{display:none}.tab{display:block!important}body::before{display:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="deckle" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#accueil"><span class="hanko">侍</span><span><span class="fr">L'Art du Samouraï</span><span class="en">The Art of the Samurai</span></span></a>
+    <nav id="nav"></nav>
+    <div class="tools">
+      <button id="theme" title="Thème / Theme">🌙</button>
+      <button id="lang" title="Langue / Language">FR</button>
+      <button id="fsm" title="Texte plus petit">A−</button>
+      <button id="fsp" title="Texte plus grand">A+</button>
+      <button id="mute" title="Musique / Music"><span class="eq"><i></i><i></i><i></i></span></button>
+      <button id="menu" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<audio id="bgm" loop preload="none">
+  <source src="san-an.mp3" type="audio/mpeg">
+</audio>
+
+<main id="main"></main>
+
+<footer>
+  <p><span class="fr">Musique : Yokoyama Katsuya — <i>San'an</i> (shakuhachi). Site inspiré de <a href="https://twagirumukiza.github.io/Art-of-War/">L'Art de la Guerre de Sun Tzu</a>. © Twagirumukiza</span>
+     <span class="en">Music: Yokoyama Katsuya — <i>San'an</i> (shakuhachi). Site inspired by <a href="https://twagirumukiza.github.io/Art-of-War/">Sun Tzu's The Art of War</a>. © Twagirumukiza</span></p>
+</footer>
+<div id="toast"></div>
+
+<script>
+/* ---------- helpers ---------- */
+const T=(o,tag='span')=>`<${tag} class="fr">${o.fr}</${tag}><${tag} class="en">${o.en}</${tag}>`;
+const store={get(k,d){try{return localStorage.getItem(k)??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- content ---------- */
+const TABS=[
+ {id:'accueil',jp:'門',fr:'Accueil',en:'Home'},
+ {id:'voie',jp:'道',fr:'La Voie',en:'The Way'},
+ {id:'arts',jp:'藝',fr:'Les arts',en:'The arts'},
+ {id:'strategie',jp:'兵',fr:'Stratégie',en:'Strategy'},
+ {id:'grc',jp:'守',fr:'GRC & Cyber',en:'GRC & Cyber'},
+ {id:'negociation',jp:'和',fr:'Négociation & Management',en:'Negotiation & Management'},
+ {id:'cas',jp:'史',fr:'Cas historiques',en:'Case studies'}
+];
+
+const VIRTUES=[
+ {k:'義',r:'Gi',fr:'Rectitude',en:'Rectitude',d:{fr:"Faire ce qui est juste, même quand c'est coûteux : la décision droite avant l'avantage.",en:"Do what is right even when it is costly: the upright decision before the advantage."}},
+ {k:'勇',r:'Yū',fr:'Courage',en:'Courage',d:{fr:"Non l'audace aveugle, mais l'acte juste accompli malgré la peur — et le courage de reculer quand il le faut.",en:"Not blind daring, but the right act done despite fear — and the courage to withdraw when needed."}},
+ {k:'仁',r:'Jin',fr:'Bienveillance',en:'Benevolence',d:{fr:"La force au service des autres : le pouvoir sans compassion devient tyrannie.",en:"Strength placed at the service of others: power without compassion becomes tyranny."}},
+ {k:'礼',r:'Rei',fr:'Courtoisie',en:'Respect',d:{fr:"La forme comme discipline : le salut, le tact, la maîtrise de soi face à l'autre.",en:"Form as discipline: the bow, tact, self-mastery in front of others."}},
+ {k:'誠',r:'Makoto',fr:'Sincérité',en:'Sincerity',d:{fr:"La cohérence entre la parole et l'acte : une promesse faite est une promesse tenue.",en:"Consistency between word and deed: a promise made is a promise kept."}},
+ {k:'名誉',r:'Meiyo',fr:'Honneur',en:'Honour',d:{fr:"La réputation comme capital moral, construit lentement et perdu vite.",en:"Reputation as moral capital, built slowly and lost quickly."}},
+ {k:'忠義',r:'Chūgi',fr:'Loyauté',en:'Loyalty',d:{fr:"Un engagement réciproque envers un seigneur, une cause, une communauté — qui n'exclut pas le jugement.",en:"A reciprocal commitment to a lord, a cause, a community — which does not exclude judgement."}}
+];
+
+const PRINCIPLES=[
+ {jp:'残心',r:'Zanshin',fr:"L'esprit qui demeure",en:"The lingering mind",
+  e:{fr:"Après le coup, l'attention ne se relâche pas. En kendō, en iaidō comme en kyūdō, le geste n'est fini que lorsque la vigilance qui le suit est tenue. Beaucoup d'erreurs surviennent juste après la réussite.",en:"After the strike, attention does not slacken. In kendō, iaidō and kyūdō alike, the act is only complete when the vigilance that follows is held. Many mistakes happen right after success."},
+  t:{fr:"Après un incident « clos », le travail commence : surveiller la réapparition, vérifier que la remédiation tient, documenter, apprendre. Un incident n'est pas terminé quand il n'est plus visible.",en:"After an “closed” incident the real work begins: watch for recurrence, verify the remediation holds, document, learn. An incident is not over when it is no longer visible."}},
+ {jp:'無心',r:'Mushin',fr:"L'esprit sans esprit",en:"The mind without mind",
+  e:{fr:"Agir sans que la pensée ne s'interpose : le résultat de milliers de répétitions, non de l'improvisation. Le geste juste vient quand l'entraînement a remplacé l'hésitation.",en:"Acting without thought getting in the way: the result of thousands of repetitions, not improvisation. The right move arrives when training has replaced hesitation."},
+  t:{fr:"Les playbooks et seuils d'escalade se préparent avant la crise. Sous stress, on n'invente pas : on exécute ce qui a été répété.",en:"Playbooks and escalation thresholds are prepared before the crisis. Under stress you do not invent: you execute what has been rehearsed."}},
+ {jp:'不動心',r:'Fudōshin',fr:"L'esprit immuable",en:"The immovable mind",
+  e:{fr:"Le moine Takuan Sōhō, conseiller de maîtres d'armes, décrit l'esprit qui ne s'arrête sur rien : ni sur la peur, ni sur l'adversaire, ni sur son propre geste. Un esprit fixé sur un point est un esprit vulnérable.",en:"The monk Takuan Sōhō, adviser to swordmasters, describes the mind that does not stop on anything: not fear, not the opponent, not its own movement. A mind fixed on one point is a vulnerable mind."},
+  t:{fr:"La conduite de crise exige un calme actif : ne pas se fixer sur la première hypothèse, communiquer avec sang-froid, ne pas laisser l'urgence dicter la précipitation.",en:"Crisis leadership demands active calm: do not fixate on the first hypothesis, communicate coolly, do not let urgency dictate haste."}},
+ {jp:'初心',r:'Shoshin',fr:"L'esprit du débutant",en:"Beginner's mind",
+  e:{fr:"Rester ouvert comme au premier jour. L'expert qui croit tout savoir cesse d'apprendre et devient prévisible.",en:"Staying open as on the first day. The expert who thinks he knows everything stops learning and becomes predictable."},
+  t:{fr:"Retours d'expérience sans blâme, revues d'architecture sans a priori, veille continue : la maturité GRC se mesure aussi à la capacité à être corrigé.",en:"Blameless post-mortems, architecture reviews without preconceptions, continuous watch: GRC maturity is also measured by the capacity to be corrected."}},
+ {jp:'間合い',r:'Ma-ai',fr:"La juste distance",en:"The right distance",
+  e:{fr:"Entre deux combattants, la distance décide de tout : trop loin, on ne peut rien ; trop près, on est exposé. Le maître règle la distance avant le geste.",en:"Between two fighters distance decides everything: too far, you can do nothing; too close, you are exposed. The master sets the distance before the move."},
+  t:{fr:"Segmentation, moindre privilège, gestion de l'exposition des tiers : choisir quelle distance on laisse entre l'adversaire et ce qui compte.",en:"Segmentation, least privilege, third-party exposure management: choosing what distance to leave between the adversary and what matters."}},
+ {jp:'先の先',r:'Sen no sen',fr:"L'initiative",en:"Initiative",
+  e:{fr:"Les écoles distinguent frapper avant que l'adversaire ne frappe (sen no sen), répondre à son geste (go no sen), ou faire naître l'ouverture par sa propre posture. Le temps, plus que la force, fait la différence.",en:"Schools distinguish striking before the opponent strikes (sen no sen), answering his move (go no sen), or creating the opening through one's own posture. Timing, more than strength, makes the difference."},
+  t:{fr:"Threat intelligence et threat hunting plutôt que simple réaction ; EBIOS RM pour anticiper les scénarios ; mais aussi savoir répondre (go no sen) avec des capacités testées.",en:"Threat intelligence and hunting rather than mere reaction; EBIOS RM to anticipate scenarios; but also knowing how to respond (go no sen) with tested capabilities."}},
+ {jp:'型',r:'Kata',fr:"La forme",en:"The form",
+  e:{fr:"Séquences codifiées répétées jusqu'à ce que le corps les comprenne. La forme n'est pas une prison : elle transmet un savoir plus vaste que ce que l'élève sait expliquer.",en:"Codified sequences repeated until the body understands them. Form is not a prison: it transmits knowledge larger than what the student can explain."},
+  t:{fr:"Procédures, exercices de crise, tests de restauration : un plan non répété est un document, pas une capacité.",en:"Procedures, crisis exercises, restore tests: an unrehearsed plan is a document, not a capability."}},
+ {jp:'活人剣',r:'Katsujinken',fr:"L'épée qui donne la vie",en:"The life-giving sword",
+  e:{fr:"Yagyū Munenori, maître d'armes des shōguns Tokugawa, oppose l'épée qui tue à celle qui préserve : la meilleure technique est celle qui évite le combat et protège ce qui doit l'être.",en:"Yagyū Munenori, sword instructor to the Tokugawa shōguns, contrasts the sword that kills with the one that preserves: the best technique is the one that avoids the fight and protects what must be protected."},
+  t:{fr:"Une sécurité qui paralyse le métier est une mauvaise sécurité. La fonction GRC protège la valeur de l'organisation ; elle n'est pas une fin en soi.",en:"Security that paralyses the business is bad security. GRC protects the organisation's value; it is not an end in itself."}},
+ {jp:'一期一会',r:'Ichi-go ichi-e',fr:"Une rencontre, une fois",en:"One time, one meeting",
+  e:{fr:"Notion associée à la voie du thé : chaque rencontre est unique et ne se reproduira pas. Présence totale, sans distraction.",en:"A notion associated with the way of tea: every encounter is unique and will not recur. Total presence, without distraction."},
+  t:{fr:"Chaque crise, chaque négociation, chaque audit a son contexte propre : appliquer une recette sans écouter la situation est une faute.",en:"Every crisis, negotiation and audit has its own context: applying a recipe without listening to the situation is a mistake."}},
+ {jp:'義理・人情',r:'Giri / Ninjō',fr:"Devoir et sentiment",en:"Duty and feeling",
+  e:{fr:"Le giri (obligation sociale et morale) s'oppose parfois au ninjō (sentiment humain). Les récits japonais, du théâtre nō et kabuki aux histoires de rōnin, vivent de ce conflit.",en:"Giri (social and moral obligation) sometimes conflicts with ninjō (human feeling). Japanese stories, from nō and kabuki theatre to rōnin tales, live on this conflict."},
+  t:{fr:"La conformité (RGPD, NIS2, DORA) est un giri ; la réalité opérationnelle, avec ses contraintes, est le ninjō. Un giri sans compréhension du terrain donne une conformité de façade.",en:"Compliance (GDPR, NIS2, DORA) is a giri; operational reality, with its constraints, is the ninjō. Giri without understanding the ground gives façade compliance."}}
+];
+
+const ARTS=[
+ {jp:'劍',fr:'Kenjutsu & Iaidō',en:'Kenjutsu & Iaidō',s:{fr:"L'épée",en:"The sword"},
+  d:{fr:"Le kenjutsu enseigne le combat au sabre ; l'iaidō, l'art de dégainer, de frapper et de ranger la lame en un seul mouvement maîtrisé. Au fond, c'est un entraînement à la décision rapide, à la distance et à la maîtrise de soi.",en:"Kenjutsu teaches sword combat; iaidō is the art of drawing, striking and sheathing the blade in a single controlled motion. At heart it is training in rapid decision, distance and self-mastery."}},
+ {jp:'弓',fr:'Kyūdō',en:'Kyūdō',s:{fr:"L'arc",en:"The bow"},
+  d:{fr:"La « voie de l'arc » décompose le tir en huit temps, du placement des pieds à la fin du geste (zanshin). L'objectif n'est pas seulement de toucher la cible, mais la qualité de la forme et de l'esprit.",en:"The “way of the bow” breaks the shot into eight stages, from foot placement to the follow-through (zanshin). The goal is not only to hit the target but the quality of form and mind."}},
+ {jp:'書',fr:'Shodō',en:'Shodō',s:{fr:"La calligraphie",en:"Calligraphy"},
+  d:{fr:"Un trait de pinceau ne se corrige pas. La calligraphie apprend la concentration, le rythme et l'acceptation de l'imperfection. Le cercle ensō, tracé d'un seul geste, est un thème zen emblématique.",en:"A brushstroke cannot be corrected. Calligraphy teaches concentration, rhythm and acceptance of imperfection. The ensō circle, drawn in a single gesture, is an emblematic Zen theme."}},
+ {jp:'茶',fr:'Chadō',en:'Chadō',s:{fr:"La voie du thé",en:"The way of tea"},
+  d:{fr:"Dans la salle de thé, les armes restent à l'extérieur. Hospitalité, attention, simplicité : un lieu où se pratiquent la courtoisie et la présence, que des hommes de guerre ont particulièrement cultivé.",en:"In the tea room, weapons stay outside. Hospitality, attention, simplicity: a place for practising courtesy and presence, which men of war notably cultivated."}},
+ {jp:'禪',fr:'Zen',en:'Zen',s:{fr:"La méditation",en:"Meditation"},
+  d:{fr:"Le zazen entraîne l'attention, le calme face à la mort et la liberté vis-à-vis des pensées parasites. Le zen a profondément influencé la culture des guerriers, de la Kamakura à l'Edo.",en:"Zazen trains attention, calm in the face of death and freedom from intrusive thoughts. Zen deeply influenced warrior culture, from the Kamakura to the Edo period."}},
+ {jp:'能',fr:'Nō',en:'Nō',s:{fr:"Le théâtre",en:"Theatre"},
+  d:{fr:"Art du geste lent et de la retenue, protégé par les élites guerrières. Sa discipline du corps, de l'espace et du silence résonne fortement avec la pratique martiale.",en:"An art of slow gesture and restraint, patronised by warrior elites. Its discipline of body, space and silence resonates strongly with martial practice."}}
+];
+
+const SUN_TABLE=[
+ [{fr:"Échelle",en:"Scale"},{fr:"L'armée, l'État, la campagne",en:"Army, state, campaign"},{fr:"L'individu, l'école, le duel",en:"The individual, the school, the duel"}],
+ [{fr:"Victoire idéale",en:"Ideal victory"},{fr:"Gagner sans combattre",en:"Win without fighting"},{fr:"Gagner par la maîtrise : le combat est réglé avant le geste",en:"Win through mastery: the fight is settled before the move"}],
+ [{fr:"Information",en:"Information"},{fr:"Espions, renseignement, tromperie",en:"Spies, intelligence, deception"},{fr:"Observation, lecture de l'adversaire, du terrain, du rythme",en:"Observation, reading the opponent, ground and rhythm"}],
+ [{fr:"Moyen principal",en:"Main means"},{fr:"Concentration des forces, logistique",en:"Concentration of forces, logistics"},{fr:"Entraînement, discipline, forme, présence d'esprit",en:"Training, discipline, form, presence of mind"}],
+ [{fr:"Risque suprême",en:"Supreme risk"},{fr:"Guerre longue, ignorance de soi et de l'autre",en:"Long war, ignorance of self and other"},{fr:"Esprit fixé, orgueil, entraînement insuffisant",en:"Fixed mind, pride, insufficient training"}]
+];
+
+const FIVE=[
+ {jp:'地',r:'Chi',fr:'Terre',en:'Earth',d:{fr:"Les fondations : l'ensemble de la stratégie, la vue d'ensemble, la connaissance de plusieurs métiers.",en:"Foundations: the whole of strategy, the overview, knowledge of many crafts."}},
+ {jp:'水',r:'Sui',fr:'Eau',en:'Water',d:{fr:"L'adaptabilité : épouser la forme du récipient, la posture de base et la souplesse.",en:"Adaptability: taking the shape of the vessel, basic posture and suppleness."}},
+ {jp:'火',r:'Ka',fr:'Feu',en:'Fire',d:{fr:"Le combat : rythme, timing, initiative, lecture des situations de crise.",en:"The fight: rhythm, timing, initiative, reading crisis situations."}},
+ {jp:'風',r:'Fū',fr:'Vent',en:'Wind',d:{fr:"Les autres écoles : comparer, comprendre leurs forces et leurs limites sans les mépriser.",en:"Other schools: compare, understand their strengths and limits without contempt."}},
+ {jp:'空',r:'Kū',fr:'Vide',en:'Void',d:{fr:"L'au-delà de la technique : liberté, absence de fixation, perception directe.",en:"Beyond technique: freedom, absence of fixation, direct perception."}}
+];
+
+const GRC=[
+ ['Zanshin 残心',{fr:"Surveillance post-incident, preuve de la remédiation, retour d'expérience",en:"Post-incident monitoring, evidence of remediation, lessons learned"}],
+ ['Ma-ai 間合い',{fr:"Segmentation, moindre privilège, périmètre et distance avec les tiers",en:"Segmentation, least privilege, perimeter and distance from third parties"}],
+ ['Mushin 無心',{fr:"Playbooks entraînés, seuils d'escalade préparés",en:"Rehearsed playbooks, prepared escalation thresholds"}],
+ ['Fudōshin 不動心',{fr:"Gestion de crise, communication de crise sans panique",en:"Crisis management, crisis communication without panic"}],
+ ['Shoshin 初心',{fr:"Revues sans a priori, veille, retour d'expérience sans blâme",en:"Reviews without preconceptions, watch, blameless post-mortems"}],
+ ['Sen no sen 先の先',{fr:"Threat intelligence, threat hunting, scénarios EBIOS RM",en:"Threat intelligence, threat hunting, EBIOS RM scenarios"}],
+ ['Kata 型',{fr:"Procédures, exercices de crise, tests de restauration",en:"Procedures, crisis exercises, restore tests"}],
+ ['Giri 義理',{fr:"Conformité (RGPD, NIS2, DORA, AI Act, CRA) — à relier à la réalité opérationnelle",en:"Compliance (GDPR, NIS2, DORA, AI Act, CRA) — to be linked to operational reality"}],
+ ['Chūgi 忠義',{fr:"Gestion des tiers : loyauté ≠ confiance aveugle ; due diligence, clauses, supervision des prestataires TIC",en:"Third-party management: loyalty ≠ blind trust; due diligence, clauses, supervision of ICT providers"}],
+ ['Katsujinken 活人剣',{fr:"La sécurité comme facilitateur : protéger le métier sans le bloquer",en:"Security as an enabler: protect the business without blocking it"}]
+];
+
+const SHUHARI=[
+ {jp:'守',r:'Shu',fr:'Obéir',en:'Obey',d:{fr:"Appliquer fidèlement les référentiels (ISO 27001, guides ANSSI, textes réglementaires) sans les remettre en cause trop tôt.",en:"Apply the frameworks faithfully (ISO 27001, ANSSI guides, regulatory texts) without questioning them too early."}},
+ {jp:'破',r:'Ha',fr:'Briser',en:'Break',d:{fr:"Adapter au contexte : approche par les risques, mesures proportionnées, arbitrages assumés.",en:"Adapt to context: risk-based approach, proportionate measures, assumed trade-offs."}},
+ {jp:'離',r:'Ri',fr:'Quitter',en:'Leave',d:{fr:"Dépasser le cadre : une pratique propre à l'organisation, améliorée en continu, qui garde l'esprit des règles.",en:"Go beyond the frame: a practice specific to the organisation, continuously improved, which keeps the spirit of the rules."}}
+];
+
+const NEGO=[
+ ['Rei 礼',{fr:"Le respect est une méthode, pas une politesse : il maintient la relation même quand l'accord échoue.",en:"Respect is a method, not mere politeness: it preserves the relationship even when the deal fails."}],
+ ['Sen no sen 先の先',{fr:"La négociation se gagne en grande partie avant la table : préparation, alternatives (BATNA), connaissance des intérêts.",en:"Negotiation is largely won before the table: preparation, alternatives (BATNA), knowledge of interests."}],
+ ['Go no sen 後の先',{fr:"Laisser l'autre s'exprimer en premier, puis répondre précisément à ce qu'il révèle.",en:"Let the other speak first, then answer precisely what they reveal."}],
+ ['Ma-ai 間合い',{fr:"Ne pas coller l'autre au mur : laisser une porte de sortie honorable, sans pression qui ferme la discussion.",en:"Do not back the other into a corner: leave an honourable way out, without pressure that closes the discussion."}],
+ ['Mushin 無心',{fr:"Ne pas s'accrocher à une position : négocier les intérêts, pas les positions.",en:"Do not cling to a position: negotiate interests, not positions."}],
+ ['Zanshin 残心',{fr:"Après l'accord, le suivi : exécution, vérification, entretien de la relation.",en:"After the deal, follow-up: execution, verification, nurturing the relationship."}]
+];
+const MGT=[
+ {fr:"<b>Réciprocité (go'on 御恩 et hōkō 奉公).</b> Dans le système féodal médiéval, la faveur du seigneur appelle le service du vassal, et inversement. Un management durable repose aussi sur des obligations mutuelles.",en:"<b>Reciprocity (go'on 御恩 and hōkō 奉公).</b> In the medieval feudal system, the lord's favour calls for the vassal's service, and vice versa. Lasting management also rests on mutual obligations."},
+ {fr:"<b>Kata puis liberté.</b> Donner un cadre clair, des méthodes éprouvées, puis laisser de l'autonomie à mesure que la maîtrise grandit (Shu-Ha-Ri).",en:"<b>Kata then freedom.</b> Give a clear frame and proven methods, then grant autonomy as mastery grows (Shu-Ha-Ri)."},
+ {fr:"<b>Corriger pour élever.</b> L'épée qui donne la vie : la critique sert la progression, pas l'humiliation.",en:"<b>Correct to elevate.</b> The life-giving sword: criticism serves progress, not humiliation."},
+ {fr:"<b>Zanshin du manager.</b> Le suivi après la décision : vérifier que ce qui a été décidé est vraiment compris et exécuté.",en:"<b>The manager's zanshin.</b> Follow-up after the decision: check that what was decided is truly understood and executed."},
+ {fr:"<b>Loyauté ≠ obéissance aveugle.</b> Un bon vassal peut remonter une remarque difficile ; une organisation saine accueille la remontée d'alerte.",en:"<b>Loyalty ≠ blind obedience.</b> A good retainer can raise a difficult remark; a healthy organisation welcomes whistle-raising."}
+];
+
+const CASES=[
+ {y:'1560',jp:'桶狭間',fr:'Okehazama',en:'Okehazama',
+  sub:{fr:"Frapper là où l'adversaire se croit en sécurité",en:"Strike where the adversary feels safe"},
+  ctx:{fr:"Imagawa Yoshimoto traverse la province d'Owari à la tête d'une armée très supérieure en nombre (les chiffres varient selon les sources). Oda Nobunaga dispose de bien moins d'hommes.",en:"Imagawa Yoshimoto crosses Owari province at the head of a much larger army (figures vary by source). Oda Nobunaga has far fewer men."},
+  fact:{fr:"Profitant d'un orage, Nobunaga attaque le campement où Yoshimoto fait halte, et le tue. L'armée Imagawa, privée de son chef, se disloque.",en:"Taking advantage of a storm, Nobunaga attacks the camp where Yoshimoto has halted, and kills him. The Imagawa army, deprived of its leader, disintegrates."},
+  less:{fr:"La supériorité numérique ne protège pas d'un relâchement de vigilance : le point décisif est parfois la tête, pas le corps.",en:"Numerical superiority does not protect against relaxed vigilance: the decisive point is sometimes the head, not the body."},
+  tr:{r:{fr:"Les fenêtres de vulnérabilité : repos, fête, maintenance, migration.",en:"Windows of vulnerability: rest, celebration, maintenance, migration."},c:{fr:"Un compte à privilèges ou un SI central compromis neutralise toute l'organisation.",en:"A compromised privileged account or central system neutralises the whole organisation."},n:{fr:"La position la plus confortable est souvent celle où l'on regarde le moins.",en:"The most comfortable position is often the one where we look least."},m:{fr:"Ne pas dépendre d'un seul décideur.",en:"Do not depend on a single decision-maker."}}},
+ {y:'1575',jp:'長篠',fr:'Nagashino',en:'Nagashino',
+  sub:{fr:"La préparation du terrain contre la réputation",en:"Terrain preparation against reputation"},
+  ctx:{fr:"Les cavaliers de Takeda Katsuyori, réputés redoutables, affrontent la coalition Oda–Tokugawa près du château de Nagashino.",en:"Takeda Katsuyori's cavalry, renowned as formidable, face the Oda–Tokugawa coalition near Nagashino castle."},
+  fact:{fr:"Les alliés alignent des tireurs d'arquebuse derrière des palissades et des obstacles. Les charges de cavalerie Takeda subissent de lourdes pertes. L'image classique de salves en trois rangs est discutée par les historiens ; le rôle du terrain préparé et de la puissance de feu est, lui, bien établi.",en:"The allies place arquebusiers behind palisades and obstacles. Takeda cavalry charges suffer heavy losses. The classic image of three-rank volleys is debated by historians; the role of prepared ground and firepower is well established."},
+  less:{fr:"Une méthode qui a gagné hier n'est pas une garantie : l'adversaire qui a préparé le terrain neutralise la tactique la plus célèbre.",en:"A method that won yesterday is not a guarantee: the adversary who prepared the ground neutralises the most famous tactic."},
+  tr:{r:{fr:"Ne pas fonder sa stratégie sur un scénario unique qui a déjà fonctionné.",en:"Do not build strategy on a single scenario that already worked."},c:{fr:"Défense en profondeur : obstacles successifs plutôt qu'un mur unique.",en:"Defence in depth: successive obstacles rather than a single wall."},n:{fr:"Se préparer à la méthode habituelle de l'autre — et s'y soustraire.",en:"Prepare for the other's usual method — and escape it."},m:{fr:"Les compétences d'hier ne suffisent plus quand la technologie change.",en:"Yesterday's skills no longer suffice when technology changes."}}},
+ {y:'1600',jp:'関ヶ原',fr:'Sekigahara',en:'Sekigahara',
+  sub:{fr:"Gagner avant la bataille : alliances et loyautés",en:"Win before the battle: alliances and loyalties"},
+  ctx:{fr:"Tokugawa Ieyasu (armée de l'Est) affronte la coalition de l'Ouest menée par Ishida Mitsunari pour le contrôle du Japon après la mort de Toyotomi Hideyoshi.",en:"Tokugawa Ieyasu (Eastern army) faces the Western coalition led by Ishida Mitsunari for control of Japan after the death of Toyotomi Hideyoshi."},
+  fact:{fr:"Ieyasu a longuement travaillé les alliances et les défections avant le jour de la bataille. Sur le terrain, le revirement de Kobayakawa Hideaki, qui change de camp en pleine bataille, contribue de manière décisive à la défaite de l'Ouest. L'affrontement est tranché en quelques heures.",en:"Ieyasu had long worked on alliances and defections before the day of the battle. On the field, the turnaround of Kobayakawa Hideaki, who changes sides mid-battle, contributes decisively to the West's defeat. The clash is settled within hours."},
+  less:{fr:"Les rapports de force se jouent en amont. Une alliance non vérifiée est un risque, pas une force.",en:"Balances of power are decided upstream. An unverified alliance is a risk, not a strength."},
+  tr:{r:{fr:"Le risque d'initié et de tiers : un partenaire peut basculer au pire moment.",en:"Insider and third-party risk: a partner can switch at the worst moment."},c:{fr:"Supply chain : faire confiance, mais vérifier (due diligence, supervision continue).",en:"Supply chain: trust but verify (due diligence, continuous supervision)."},n:{fr:"Travailler les alliances avant la table de négociation.",en:"Work on alliances before the negotiation table."},m:{fr:"La loyauté se cultive et se vérifie ; elle ne se suppose pas.",en:"Loyalty is cultivated and verified; it is not assumed."}}},
+ {y:'1274 · 1281',jp:'元寇',fr:"Invasions mongoles",en:"Mongol invasions",
+  sub:{fr:"Préparer le terrain, durer, résister",en:"Prepare the ground, endure, resist"},
+  ctx:{fr:"Les flottes Yuan et coréennes tentent par deux fois de débarquer au Japon, en baie de Hakata. Le gouvernement de Kamakura et ses guerriers défendent le rivage.",en:"Yuan and Korean fleets twice attempt to land in Japan, at Hakata Bay. The Kamakura government and its warriors defend the shore."},
+  fact:{fr:"Après 1274, les Japonais construisent une muraille de pierre le long de la baie. En 1281, les envahisseurs peinent à prendre pied ; un typhon détruit une grande partie de la flotte, ce qui entre dans la tradition sous le nom de « kamikaze » (vent divin).",en:"After 1274 the Japanese build a stone wall along the bay. In 1281 the invaders struggle to gain a foothold; a typhoon destroys much of the fleet, which entered tradition under the name “kamikaze” (divine wind)."},
+  less:{fr:"La chance a joué, mais la muraille avait acheté du temps : la préparation transforme un coup du sort en avantage.",en:"Luck played its part, but the wall had bought time: preparation turns a stroke of fate into an advantage."},
+  tr:{r:{fr:"Résilience : on ne compte pas sur le hasard, on se donne le temps de durer.",en:"Resilience: do not count on chance; give yourself time to endure."},c:{fr:"PCA/PRA et sauvegardes : ralentir l'adversaire jusqu'à ce que son effet s'épuise.",en:"BCP/DRP and backups: slow the adversary until its effect wears off."},n:{fr:"Gagner du temps change le rapport de force.",en:"Buying time changes the balance of power."},m:{fr:"Les investissements défensifs se justifient avant la crise, pas après.",en:"Defensive investments are justified before the crisis, not after."}}},
+ {y:'1701–1703',jp:'赤穂',fr:"Les quarante-sept rōnin (Akō)",en:"The forty-seven rōnin (Akō)",
+  sub:{fr:"Patience, apparence et conflit entre devoir et loi",en:"Patience, appearances and the conflict between duty and law"},
+  ctx:{fr:"En 1701, le seigneur Asano Naganori attaque Kira Yoshinaka dans le château d'Edo. Il est condamné à se donner la mort et son fief est dissous. Ses anciens vassaux deviennent rōnin.",en:"In 1701, lord Asano Naganori attacks Kira Yoshinaka in Edo castle. He is condemned to commit seppuku and his domain is dissolved. His former retainers become rōnin."},
+  fact:{fr:"Menés par Ōishi Kuranosuke, les quarante-sept hommes attendent près de deux ans et donnent l'image d'hommes sans projet pour endormir la méfiance. Ils attaquent la résidence de Kira et le tuent. Le shogunat les condamne ensuite à se donner la mort.",en:"Led by Ōishi Kuranosuke, the forty-seven men wait nearly two years and give the appearance of aimless men to lull suspicion. They attack Kira's residence and kill him. The shogunate then sentences them to commit seppuku."},
+  less:{fr:"Un adversaire patient, qui ne se presse pas et sait paraître inoffensif, est redoutable. Et le giri peut entrer en conflit avec la loi.",en:"A patient adversary, who does not hurry and knows how to look harmless, is formidable. And giri can conflict with law."},
+  tr:{r:{fr:"Les menaces persistantes avancées : l'attaque vient après une longue période d'observation.",en:"Advanced persistent threats: the attack comes after a long period of observation."},c:{fr:"Un silence prolongé n'est pas une absence de menace.",en:"A prolonged silence is not the absence of a threat."},n:{fr:"Distinguer position affichée et intention réelle.",en:"Distinguish stated position from real intention."},m:{fr:"Loyauté, conformité et éthique peuvent entrer en tension : la gouvernance doit l'anticiper.",en:"Loyalty, compliance and ethics may conflict: governance must anticipate it."}}},
+ {y:'1877',jp:'城山',fr:"Shiroyama (rébellion de Satsuma)",en:"Shiroyama (Satsuma Rebellion)",
+  sub:{fr:"Quand la maîtrise d'une forme ne suffit plus",en:"When mastery of a form is no longer enough"},
+  ctx:{fr:"Après la Restauration de Meiji, l'État abolit la classe des samouraïs : fin des fiefs, conscription (1873), interdiction du port du sabre (1876). Saigō Takamori prend la tête d'une insurrection à Satsuma.",en:"After the Meiji Restoration the state abolishes the samurai class: end of the domains, conscription (1873), ban on carrying swords (1876). Saigō Takamori takes the lead of an uprising in Satsuma."},
+  fact:{fr:"Les insurgés, malgré leur courage et leur discipline, affrontent une armée impériale de conscrits équipée d'armes modernes et soutenue par une logistique d'État. La rébellion s'achève à Shiroyama en septembre 1877.",en:"The insurgents, despite their courage and discipline, face an imperial conscript army with modern weapons and state logistics. The rebellion ends at Shiroyama in September 1877."},
+  less:{fr:"Maîtriser une forme ancienne ne protège pas d'un changement de paradigme. La vertu sans adaptation finit par être dépassée.",en:"Mastering an old form does not protect against a paradigm shift. Virtue without adaptation ends up overtaken."},
+  tr:{r:{fr:"L'obsolescence : un modèle qui a fait ses preuves peut devenir un risque.",en:"Obsolescence: a proven model can become a risk."},c:{fr:"Systèmes hérités et pratiques anciennes face aux nouvelles menaces.",en:"Legacy systems and old practices against new threats."},n:{fr:"Reconnaître quand le cadre a changé.",en:"Recognise when the frame has changed."},m:{fr:"Conduite du changement : Shu-Ha-Ri — il faut aller jusqu'à « quitter la forme ».",en:"Change management: Shu-Ha-Ri — one must go as far as “leaving the form”."}}}
+];
+
+/* ---------- renderers ---------- */
+const nav=(i)=>{
+  const p=TABS[i-1],n=TABS[i+1];
+  return `<div class="pager"><span>${p?`<a href="#${p.id}">← ${T(p)}</a>`:''}</span><span>${n?`<a href="#${n.id}">${T(n)} →</a>`:''}</span></div>`;
+};
+const title=(i,num,t,intro)=>`<div class="title"><span class="hanko">${TABS[i].jp}</span><h2>${num} ${T(t)}</h2></div><p class="intro">${T(intro,'span')}</p>`;
+const acc=(id)=>`<div class="toolrow"><button onclick="toggleAll('${id}',true)">${T({fr:'Tout déplier',en:'Expand all'})}</button><button onclick="toggleAll('${id}',false)">${T({fr:'Tout replier',en:'Collapse all'})}</button></div>`;
+
+const R={};
+
+R.accueil=()=>`
+<div class="hero">
+  <div>
+    <div class="kicker">${T({fr:'Bushidō · 武士道',en:'Bushidō · 武士道'})}</div>
+    <h1><span class="fr">L'Art du Samouraï</span><span class="en">The Art of the Samurai</span>
+      <small><span class="fr">Voie, stratégie, risque, négociation</span><span class="en">Way, strategy, risk, negotiation</span></small></h1>
+    <p class="lead">${T({fr:"Une tradition guerrière devenue une école de maîtrise de soi, de discipline et de jugement — que l'on peut relire aujourd'hui à la lumière de la cybersécurité, du GRC, de la négociation et du management.",en:"A warrior tradition that became a school of self-mastery, discipline and judgement — which can be reread today in the light of cybersecurity, GRC, negotiation and management."},'span')}</p>
+    <div class="maxim">${T({fr:"La voie ne se possède pas : elle se pratique, chaque jour, jusqu'à ce que le geste devienne juste.",en:"The way is not possessed: it is practised, every day, until the gesture becomes right."},'span')}
+      <cite>${T({fr:"— Maxime du site",en:"— Maxim of this site"})}</cite></div>
+    <p>${T({fr:"Les samouraïs (侍, <i>samurai</i>, « ceux qui servent ») ont dominé la vie politique et militaire du Japon pendant plusieurs siècles, avant d'être abolis comme classe à l'ère Meiji (1868–1912). Leur héritage est autant culturel — le sabre, l'arc, le thé, le zen, le théâtre nō — que stratégique.",en:"The samurai (侍, <i>samurai</i>, “those who serve”) dominated Japan's political and military life for several centuries, before being abolished as a class in the Meiji era (1868–1912). Their legacy is as cultural — the sword, the bow, tea, Zen, nō theatre — as it is strategic."},'span')}</p>
+  </div>
+  <div>
+    <div class="print"><div class="print-in">
+      <div class="fallback"><span>侍</span></div>
+      <img src="samourai.jpg" alt="Estampe : samouraï méditant dans un jardin" onerror="this.remove()">
+    </div></div>
+    <div class="caption">${T({fr:"Estampe d'inspiration ukiyo-e · 浮世絵 — le guerrier en méditation (zen) avec sabres et bouilloire à thé",en:"Ukiyo-e inspired print · 浮世絵 — the warrior in Zen meditation with swords and tea kettle"})}</div>
+  </div>
+</div>
+<h3>${T({fr:'Sept portes pour entrer',en:'Seven doors to enter'})}</h3>
+<div class="grid">${TABS.slice(1).map((t,i)=>`<a class="card" href="#${t.id}" style="text-decoration:none;color:inherit"><span class="k">${t.jp}</span><div class="sub">0${i+1}</div><h4>${T(t)}</h4><p>${T({
+  voie:{fr:"Les sept vertus et dix principes intérieurs.",en:"The seven virtues and ten inner principles."},
+  arts:{fr:"Sabre, arc, calligraphie, thé, zen, nō.",en:"Sword, bow, calligraphy, tea, Zen, nō."},
+  strategie:{fr:"Musashi, Munenori, Takuan face à Sun Tzu.",en:"Musashi, Munenori, Takuan versus Sun Tzu."},
+  grc:{fr:"Zanshin, ma-ai, kata : lecture GRC.",en:"Zanshin, ma-ai, kata: a GRC reading."},
+  negociation:{fr:"Courtoisie, timing, réciprocité.",en:"Courtesy, timing, reciprocity."},
+  cas:{fr:"Six épisodes historiques, de 1274 à 1877.",en:"Six historical episodes, 1274 to 1877."}}[t.id],'span')}</p></a>`).join('')}</div>
+${nav(0)}`;
+
+R.voie=()=>`${title(1,'01',{fr:'La Voie du guerrier',en:'The Way of the warrior'},{fr:"Le bushidō (武士道, « voie du guerrier ») désigne l'éthique attribuée aux samouraïs : courage, loyauté, honneur, maîtrise de soi. Il se lit mieux comme un idéal que comme un code unique.",en:"Bushidō (武士道, “way of the warrior”) designates the ethics attributed to the samurai: courage, loyalty, honour, self-mastery. It reads better as an ideal than as a single code."})}
+<h3>${T({fr:'Les sept vertus',en:'The seven virtues'})}</h3>
+<div class="grid">${VIRTUES.map(v=>`<div class="card"><span class="k">${v.k}</span><div class="sub">${v.r}</div><h4>${T(v)}</h4><p>${T(v.d,'span')}</p></div>`).join('')}</div>
+<div class="note"><b>${T({fr:'Prudence historique.',en:'Historical caution.'})}</b> ${T({fr:"La liste en sept vertus est une synthèse moderne popularisée en 1900 par Nitobe Inazō (<i>Bushido: The Soul of Japan</i>). Le bushidō formalisé s'est surtout construit à l'époque d'Edo (1603–1868), lorsque les samouraïs étaient devenus des administrateurs en temps de paix. Il faut donc distinguer les pratiques des guerriers, les écrits d'Edo et l'idéalisation de l'ère Meiji.",en:"The list of seven virtues is a modern synthesis popularised in 1900 by Nitobe Inazō (<i>Bushido: The Soul of Japan</i>). Formalised bushidō was mostly built in the Edo period (1603–1868), when samurai had become administrators in peacetime. One must therefore distinguish warrior practice, Edo writings and Meiji-era idealisation."},'span')}</div>
+<h3>${T({fr:'Dix principes intérieurs',en:'Ten inner principles'})}</h3>
+${acc('pr')}
+<div id="pr">${PRINCIPLES.map((p,i)=>`<details><summary><span class="n">${String(i+1).padStart(2,'0')}</span><span class="t"><span class="jp">${p.jp}</span> ${p.r} <small>${T(p)}</small></span></summary><div class="body"><h5>${T({fr:'Dans la voie',en:'In the way'})}</h5><p>${T(p.e,'span')}</p><h5>${T({fr:'Transposition',en:'Transposition'})}</h5><p>${T(p.t,'span')}</p></div></details>`).join('')}</div>
+${nav(1)}`;
+
+R.arts=()=>`${title(2,'02',{fr:'Les arts de la voie',en:'The arts of the way'},{fr:"Le suffixe 道 (dō, « voie ») transforme une technique en discipline de vie : on ne cherche pas seulement à réussir, mais à devenir meilleur par la pratique.",en:"The suffix 道 (dō, “way”) turns a technique into a discipline of life: one seeks not only to succeed but to become better through practice."})}
+<div class="grid">${ARTS.map(a=>`<div class="card"><span class="k">${a.jp}</span><div class="sub">${T(a.s)}</div><h4>${T(a)}</h4><p>${T(a.d,'span')}</p></div>`).join('')}</div>
+<div class="note"><b>${T({fr:'Bun et bu.',en:'Bun and bu.'})}</b> ${T({fr:"L'idéal samouraï associe <i>bu</i> (武, les arts martiaux) et <i>bun</i> (文, les lettres et les arts). Un guerrier accompli devait aussi savoir écrire, peindre, composer, servir le thé. La maîtrise de l'épée seule était considérée comme incomplète.",en:"The samurai ideal pairs <i>bu</i> (武, the martial arts) with <i>bun</i> (文, letters and the arts). An accomplished warrior was also expected to write, paint, compose, serve tea. Mastery of the sword alone was considered incomplete."},'span')}</div>
+${nav(2)}`;
+
+R.strategie=()=>`${title(3,'03',{fr:'Stratégie : Musashi, Munenori, Takuan',en:'Strategy: Musashi, Munenori, Takuan'},{fr:"Trois voix de l'époque d'Edo, trois angles : le duelliste, le conseiller des shōguns, le moine zen.",en:"Three voices of the Edo period, three angles: the duellist, the shōguns' adviser, the Zen monk."})}
+<div class="grid">
+<div class="card"><span class="k">武</span><div class="sub">1584?–1645</div><h4>Miyamoto Musashi</h4><p>${T({fr:"Duelliste devenu auteur du <i>Livre des Cinq Anneaux</i> (<i>Gorin no sho</i>), écrit à la fin de sa vie. Son école, le Niten Ichi-ryū, utilise deux sabres. Sa stratégie est pratique, empirique, centrée sur le timing et la lecture de la situation.",en:"A duellist who became the author of <i>The Book of Five Rings</i> (<i>Gorin no sho</i>), written near the end of his life. His school, Niten Ichi-ryū, uses two swords. His strategy is practical, empirical, centred on timing and reading the situation."},'span')}</p></div>
+<div class="card"><span class="k">柳</span><div class="sub">1571–1646</div><h4>Yagyū Munenori</h4><p>${T({fr:"Maître d'armes des shōguns Tokugawa, auteur du <i>Heihō kadenshō</i> (1632). Il rapproche l'escrime et l'art de gouverner : l'« épée qui donne la vie » préserve l'ordre plutôt que de le détruire.",en:"Sword instructor to the Tokugawa shōguns, author of the <i>Heihō kadenshō</i> (1632). He draws escrime and statecraft together: the “life-giving sword” preserves order rather than destroying it."},'span')}</p></div>
+<div class="card"><span class="k">禪</span><div class="sub">1573–1645</div><h4>Takuan Sōhō</h4><p>${T({fr:"Moine zen, conseiller de maîtres d'armes. Sa lettre sur la « sagesse immuable » développe l'idée d'un esprit qui ne s'arrête pas : ce qui bloque l'attention bloque le geste.",en:"Zen monk, adviser to swordmasters. His letter on “immovable wisdom” develops the idea of a mind that does not stop: what blocks attention blocks the gesture."},'span')}</p></div>
+</div>
+<h3>${T({fr:'Les Cinq Anneaux de Musashi',en:"Musashi's Five Rings"})}</h3>
+<div class="steps">${FIVE.map(f=>`<div class="step"><div class="jp">${f.jp}</div><h4>${T(f)} <small style="color:var(--seal)">${f.r}</small></h4><p style="margin:.2rem 0;font-size:.93rem">${T(f.d,'span')}</p></div>`).join('')}</div>
+<h3>${T({fr:'Sun Tzu et la tradition samouraï',en:'Sun Tzu and the samurai tradition'})}</h3>
+<p>${T({fr:"Sun Tzu raisonne à l'échelle de l'État et de l'armée ; la tradition samouraï, surtout à l'échelle de l'individu et de l'école. Les deux se rejoignent : l'ordre du combat est décidé avant le combat.",en:"Sun Tzu reasons at the scale of the state and the army; the samurai tradition mostly at the scale of the individual and the school. The two meet: the order of the fight is decided before the fight."},'span')}</p>
+<div class="tscroll"><table><tr><th></th><th>Sun Tzu · 孫子</th><th>${T({fr:'Tradition samouraï',en:'Samurai tradition'})}</th></tr>${SUN_TABLE.map(r=>`<tr><th>${T(r[0])}</th><td>${T(r[1])}</td><td>${T(r[2])}</td></tr>`).join('')}</table></div>
+<div class="note"><b>Hagakure.</b> ${T({fr:"Compilé au début du XVIIIᵉ siècle à partir des propos de Yamamoto Tsunetomo, ce recueil est célèbre pour son idée d'une préparation constante à la mort. Il s'agit d'une réflexion de temps de paix et d'un regret de l'ancienne gloire guerrière : à lire dans son contexte plutôt qu'à prendre comme un mode d'emploi.",en:"Compiled in the early 18th century from the remarks of Yamamoto Tsunetomo, this collection is famous for its idea of constant readiness for death. It is a peacetime reflection and a nostalgia for former warrior glory: to be read in context rather than taken as an instruction manual."},'span')}</div>
+${nav(3)}`;
+
+R.grc=()=>`${title(4,'04',{fr:"L'Art du Samouraï appliqué au GRC et à la cybersécurité",en:'The Art of the Samurai applied to GRC and cybersecurity'},{fr:"Un cadre de lecture : les concepts de la voie comme grille de réflexes pour la gouvernance, le risque et la conformité. La correspondance est proposée à titre d'interprétation.",en:"A reading frame: the concepts of the way as a grid of reflexes for governance, risk and compliance. The mapping is offered as an interpretation."})}
+<h3>${T({fr:'Table de correspondance',en:'Correspondence table'})}</h3>
+<div class="tscroll"><table><tr><th>${T({fr:'Concept samouraï',en:'Samurai concept'})}</th><th>${T({fr:'GRC / cybersécurité',en:'GRC / cybersecurity'})}</th></tr>${GRC.map(r=>`<tr><td><b>${r[0]}</b></td><td>${T(r[1])}</td></tr>`).join('')}</table></div>
+<h3>Shu-Ha-Ri 守破離 ${T({fr:'et la maturité GRC',en:'and GRC maturity'})}</h3>
+<p>${T({fr:"Trois étapes d'apprentissage dans les arts japonais. Elles décrivent très bien la progression d'une pratique GRC.",en:"Three stages of learning in the Japanese arts. They describe the progression of a GRC practice very well."},'span')}</p>
+<div class="steps">${SHUHARI.map(s=>`<div class="step"><div class="jp">${s.jp}</div><h4>${s.r} · ${T(s)}</h4><p style="margin:.2rem 0;font-size:.93rem">${T(s.d,'span')}</p></div>`).join('')}</div>
+<h3>${T({fr:"Giri sans ninjō : la conformité de façade",en:"Giri without ninjō: façade compliance"})}</h3>
+<p>${T({fr:"Un RGPD, une NIS2 ou un DORA appliqués uniquement comme obligation (giri) produisent des dossiers sans capacité réelle. L'équivalent du ninjō, c'est la connaissance du terrain : les équipes, les contraintes, les dépendances. Distinguer <b>conformité documentaire</b> et <b>capacité opérationnelle</b> est la première discipline.",en:"A GDPR, NIS2 or DORA applied only as an obligation (giri) produces files without real capability. The equivalent of ninjō is knowledge of the ground: teams, constraints, dependencies. Distinguishing <b>documentary compliance</b> from <b>operational capability</b> is the first discipline."},'span')}</p>
+<div class="note"><b>${T({fr:"Formule",en:"Formula"})}.</b> ${T({fr:"Zanshin + kata + ma-ai : surveiller après, répéter avant, doser la distance pendant.",en:"Zanshin + kata + ma-ai: watch after, rehearse before, tune the distance during."},'span')}</div>
+${nav(4)}`;
+
+R.negociation=()=>`${title(5,'05',{fr:'Négociation & Management',en:'Negotiation & Management'},{fr:"La tradition samouraï n'est pas seulement une affaire de combat : c'est aussi une culture de la relation, de la forme et de la réciprocité.",en:"The samurai tradition is not only about combat: it is also a culture of relationship, form and reciprocity."})}
+<h3>${T({fr:'Négociation',en:'Negotiation'})}</h3>
+<div class="tscroll"><table><tr><th>${T({fr:'Concept',en:'Concept'})}</th><th>${T({fr:'Application',en:'Application'})}</th></tr>${NEGO.map(r=>`<tr><td><b>${r[0]}</b></td><td>${T(r[1])}</td></tr>`).join('')}</table></div>
+<h3>Management</h3>
+<ol>${MGT.map(m=>`<li style="margin:.5rem 0">${T(m,'span')}</li>`).join('')}</ol>
+<div class="note"><b>${T({fr:'Prudence avec la métaphore.',en:'Careful with the metaphor.'})}</b> ${T({fr:"Le système féodal reposait sur une hiérarchie rigide et sur la violence. Il s'agit d'en tirer des principes de relation et de discipline, pas un modèle d'organisation à reproduire.",en:"The feudal system rested on a rigid hierarchy and on violence. The point is to draw principles of relationship and discipline from it, not an organisational model to reproduce."},'span')}</div>
+${nav(5)}`;
+
+R.cas=()=>`${title(6,'06',{fr:"Les principes à l'épreuve de l'Histoire",en:'Principles tested by History'},{fr:"Six épisodes, de 1274 à 1877. Chaque fiche suit la même architecture : contexte, déroulé, leçon, transposition.",en:"Six episodes, from 1274 to 1877. Each file follows the same structure: context, course of events, lesson, transposition."})}
+${acc('cs')}
+<div id="cs">${CASES.map((c,i)=>`<details><summary><span class="n">${String(i+1).padStart(2,'0')}</span><span class="t"><span class="jp">${c.jp}</span> ${T(c)} · ${c.y}<small>${T(c.sub)}</small></span></summary><div class="body">
+<h5>${T({fr:'Contexte',en:'Context'})}</h5><p>${T(c.ctx,'span')}</p>
+<h5>${T({fr:'Ce qui s\'est passé',en:'What happened'})}</h5><p>${T(c.fact,'span')}</p>
+<h5>${T({fr:'Leçon stratégique',en:'Strategic lesson'})}</h5><p><b>${T(c.less,'span')}</b></p>
+<h5>${T({fr:'Transposition',en:'Transposition'})}</h5>
+<ul class="tight"><li><span class="pill">${T({fr:'Risque',en:'Risk'})}</span>${T(c.tr.r)}</li><li><span class="pill">Cyber</span>${T(c.tr.c)}</li><li><span class="pill">${T({fr:'Négociation',en:'Negotiation'})}</span>${T(c.tr.n)}</li><li><span class="pill">Management</span>${T(c.tr.m)}</li></ul>
+</div></details>`).join('')}</div>
+<div class="note"><b>${T({fr:'Sources et nuances.',en:'Sources and nuances.'})}</b> ${T({fr:"Les effectifs, dates précises et détails tactiques varient selon les historiens, et plusieurs récits (Nagashino, Okehazama, Akō) ont été fortement romancés par la tradition. Ces fiches visent la réflexion stratégique, pas l'exactitude d'un manuel d'histoire.",en:"Troop numbers, precise dates and tactical details vary among historians, and several accounts (Nagashino, Okehazama, Akō) were heavily romanticised by tradition. These files aim at strategic reflection, not the exactness of a history textbook."},'span')}</div>
+${nav(6)}`;
+
+/* ---------- app ---------- */
+const $=s=>document.querySelector(s);
+const main=$('#main'),navEl=$('#nav'),root=document.documentElement;
+navEl.innerHTML=TABS.map(t=>`<a href="#${t.id}" data-id="${t.id}">${T(t)}</a>`).join('');
+main.innerHTML=TABS.map(t=>`<section class="tab" data-tab="${t.id}">${R[t.id]()}</section>`).join('');
+
+function toggleAll(id,open){document.querySelectorAll('#'+id+' details').forEach(d=>d.open=open)}
+window.toggleAll=toggleAll;
+
+function show(){
+  let id=(location.hash||'#accueil').slice(1);
+  if(!TABS.some(t=>t.id===id)) id='accueil';
+  document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on',s.dataset.tab===id));
+  navEl.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.dataset.id===id));
+  navEl.classList.remove('open');
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',show);
+show();
+
+/* theme */
+function setTheme(t){root.dataset.theme=t;$('#theme').textContent=t==='dark'?'☀️':'🌙';store.set('sam-theme',t)}
+setTheme(store.get('sam-theme',matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+$('#theme').onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
+
+/* language */
+function setLang(l){root.dataset.lang=l;root.lang=l;$('#lang').textContent=l.toUpperCase();store.set('sam-lang',l)}
+setLang(store.get('sam-lang',(navigator.language||'fr').toLowerCase().startsWith('fr')?'fr':'en'));
+$('#lang').onclick=()=>setLang(root.dataset.lang==='fr'?'en':'fr');
+
+/* font size */
+let fs=parseInt(store.get('sam-fs','17'),10)||17;
+const applyFs=()=>{fs=Math.max(14,Math.min(22,fs));root.style.setProperty('--fs',fs+'px');store.set('sam-fs',fs)};
+applyFs();
+$('#fsm').onclick=()=>{fs--;applyFs()};$('#fsp').onclick=()=>{fs++;applyFs()};
+
+/* menu */
+$('#menu').onclick=()=>navEl.classList.toggle('open');
+
+/* toast */
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),4200)}
+
+/* music */
+const bgm=$('#bgm'),mute=$('#mute');
+let wantMusic=store.get('sam-music','on')!=='off',missing=false;
+bgm.volume=.55;
+function paint(){mute.classList.toggle('paused',bgm.paused)}
+bgm.addEventListener('play',paint);bgm.addEventListener('pause',paint);
+bgm.addEventListener('error',()=>{missing=true;paint()},true);
+bgm.querySelector('source').addEventListener('error',()=>{missing=true;paint()});
+async function play(){
+  try{await bgm.play()}catch(e){/* autoplay blocked */}
+  if(missing||bgm.error) toast(root.dataset.lang==='fr'?"Fichier audio introuvable : ajoutez san-an.mp3 à côté de index.html.":"Audio file not found: add san-an.mp3 next to index.html.");
+}
+mute.onclick=()=>{
+  if(bgm.paused){wantMusic=true;store.set('sam-music','on');bgm.load();play()}
+  else{bgm.pause();wantMusic=false;store.set('sam-music','off')}
+};
+paint();
+/* browsers block autoplay: start on first interaction if the visitor has not muted */
+const first=()=>{document.removeEventListener('pointerdown',first);document.removeEventListener('keydown',first);
+  if(wantMusic&&bgm.paused){bgm.load();play()}};
+document.addEventListener('pointerdown',first);document.addEventListener('keydown',first);
+</script>
+</body>
+</html>
